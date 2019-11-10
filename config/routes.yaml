@@ -1,3 +1,11 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
+hello-world:
+    path: /hello-world
+    controller: App\Controller\HelloController::helloWorld
+
+show-message:
+    path: /show-message
+    controller: App\Controller\HelloController:showMessage
+
+cadastrar-produto:
+    path: /create-product
+    controller: App\Controller\HelloController:createProduct

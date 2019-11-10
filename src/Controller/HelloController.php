@@ -2,18 +2,13 @@
 
 namespace App\Controller;
 
+use App\Entity\Product;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class HelloController extends AbstractController
 {
-
-    /**
-     * @return Response
-     *
-     * @Route("/hello-world")
-     */
     public function helloWorld()
     {
         return new Response (
@@ -21,15 +16,30 @@ class HelloController extends AbstractController
         );
     }
 
-    /**
-     * @return string
-     * @Route("/mostrar-mensagem");
-     */
-    public function mensagem()
+    public function showMessage()
     {
         return $this->render('hello/index.html.twig',[
-            'mensagem' => 'Olá School of net'
+            'message' => 'Hi School of net'
         ]);
+    }
+
+    public function createProduct()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $product = new Product();
+        $product->setName('Arroz');
+        $product->setPrice(10.50);
+
+        $em->persist($product);
+        $em->flush();
+
+        return new Response(
+            sprintf(
+                'Product %s created.',
+                $product->getId()
+            )
+        );
     }
 
 }

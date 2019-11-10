@@ -6,6 +6,7 @@
          backupGlobals="false"
          colors="true"
          bootstrap="config/bootstrap.php"
+         testdox="true"
 >
     <php>
         <ini name="error_reporting" value="-1" />
@@ -24,4 +25,10 @@
             <directory>src</directory>
         </whitelist>
     </filter>
+    
+    <extensions>
+        <extension class="DAMA\DoctrineTestBundle\PHPUnit\PHPUnitExtension"/>
+    </extensions>
+
+
 </phpunit>

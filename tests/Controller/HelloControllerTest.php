@@ -16,4 +16,5 @@ class HelloControllerTest extends WebTestCase
         $this->assertEquals(Response::HTTP_OK, $client->getResponse()->getStatusCode());
         $this->assertEquals('oi', $client->getResponse()->getContent());
     }
+
 }
